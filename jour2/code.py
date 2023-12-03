@@ -10,7 +10,7 @@ def transforme_liste(chaine):
         for sous_element in element.split(','):
             sous_sous_element = sous_element.split(' ')
             if len(sous_sous_element) == 3:
-                dico_t[sous_sous_element[2]] = sous_sous_element[1]
+                dico_t[sous_sous_element[2]] = int(sous_sous_element[1])
             liste_t.append(sous_element)
         liste.append(dico_t)
     return liste
@@ -25,4 +25,22 @@ def make_dico(nom_fichier):
             dico[cle] = valeur
     return dico
 
-print(make_dico('jour2/input'))
+def is_a_valid_game(game):
+    for dico in game:
+        if not (dico.get("red",0) <= 12 and dico.get("green",0) <= 13 and dico.get("blue",0) <= 14):
+            return False
+    return True
+
+def num_game(game):
+    return int(game.split(' ')[1])
+
+def somme_parties_possibles(nom_fichier):
+    dico = make_dico(nom_fichier)
+    somme = 0
+    for game, values in dico.items():
+        if is_a_valid_game(values):
+            somme += num_game(game)
+    return somme
+
+#condition : 12red, 13green, 14blue 
+print(somme_parties_possibles('jour2/input'))
