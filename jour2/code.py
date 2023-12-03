@@ -62,6 +62,6 @@ def somme_power(nom_fichier):
         somme += power(values)
     return somme
 
-#condition : 12red, 13green, 14blue 
+#condition : 12red, 13green, 14blue
 print(somme_parties_possibles('jour2/input'))
 print(somme_power('jour2/input'))
