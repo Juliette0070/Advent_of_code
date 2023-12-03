@@ -54,6 +54,35 @@ def somme_des_parties(nom_fichier):
                 current_number_valid = False
     return somme
 
+def gear_ratio(fichier, num_ligne, num_carac):
+    pass
+
+def is_a_gear(fichier, num_ligne, num_carac):
+    if fichier[num_ligne][num_carac] == "*":
+        nb_numbers_around = 0
+        if num_ligne != 0:
+            if num_carac != 0 and fichier[num_ligne-1][num_carac-1].isdigit():
+                nb_numbers_around += 1
+            if fichier[num_ligne-1][num_carac].isdigit():
+                nb_numbers_around += 1
+            if num_carac != len(fichier[num_ligne])-1 and fichier[num_ligne-1][num_carac+1].isdigit():
+                nb_numbers_around += 1
+        if num_carac != 0 and fichier[num_ligne][num_carac-1].isdigit():
+            nb_numbers_around += 1
+        if num_carac != len(fichier[num_ligne])-1 and fichier[num_ligne][num_carac+1].isdigit():
+            nb_numbers_around += 1
+        if num_ligne != len(fichier)-1:
+            if num_carac != 0 and fichier[num_ligne+1][num_carac-1].isdigit():
+                nb_numbers_around += 1
+            if fichier[num_ligne+1][num_carac].isdigit():
+                nb_numbers_around += 1
+            if num_carac != len(fichier[num_ligne])-1 and fichier[num_ligne+1][num_carac+1].isdigit():
+                nb_numbers_around += 1
+    return False
+
+def somme_des_gears(nom_fichier):
+    pass
+
 def all_caracs(nom_fichier):
     fichier = get_fichier(nom_fichier)
     caracs = set()
